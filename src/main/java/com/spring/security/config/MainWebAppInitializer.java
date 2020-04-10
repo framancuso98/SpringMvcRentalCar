@@ -1,4 +1,4 @@
-package com.spring.security.config;
+/*package com.spring.security.config;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -25,4 +25,4 @@ public class MainWebAppInitializer implements WebApplicationInitializer {
         appServlet.setLoadOnStartup(1);
         appServlet.addMapping("/");
     }
-}
+}*/

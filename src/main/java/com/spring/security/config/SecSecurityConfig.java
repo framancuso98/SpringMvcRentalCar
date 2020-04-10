@@ -1,4 +1,4 @@
-package com.spring.security.config;
+/*package com.spring.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,25 +23,25 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
           .withUser("admin").password(passwordEncoder().encode("adminPass")).roles("ADMIN");
     }
  
-    @Override
+    @Override 
     protected void configure(final HttpSecurity http) throws Exception {
         http
           .csrf().disable()
           .authorizeRequests()
-          .antMatchers("/admin/**").hasRole("ADMIN")
+          //.antMatchers("/admin/**").hasRole("ADMIN")
           //.antMatchers("/anonymous*").anonymous()
-          .antMatchers("/login*").permitAll()
+          .antMatchers("/login").permitAll()
           .anyRequest().authenticated()
           .and()
           .formLogin()
           .loginPage("/login")
-          .loginProcessingUrl("/perform_login")
+          //.loginProcessingUrl("/perform_login")
           .defaultSuccessUrl("/login", true)
           .failureUrl("/login?error=true")
           //.failureHandler(authenticationFailureHandler())
           .and()
           .logout()
-          .logoutUrl("/perform_logout")
+          .logoutUrl("/logout")
           .deleteCookies("JSESSIONID");
           //.logoutSuccessHandler(logoutSuccessHandler());
     }
@@ -51,3 +51,4 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 }
+*/
