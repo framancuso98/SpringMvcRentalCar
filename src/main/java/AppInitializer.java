@@ -1,6 +1,7 @@
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import com.spring.security.config.HibernateConfig;
+import com.spring.security.config.SecurityWebApplicationInitializer;
 import com.spring.security.config.WebConfig;
 import com.spring.security.config.WebSecurityConfig;
 //import com.spring.security.config.WebSecurityConfig;

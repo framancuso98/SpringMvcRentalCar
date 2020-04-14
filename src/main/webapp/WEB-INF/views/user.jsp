@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>AUTO</h1>
-    <br>
-    <form action="logout" method="get">
-    <input type="submit" value="logout">
-    </form>
+<h1>USER</h1>
 </body>
 </html>

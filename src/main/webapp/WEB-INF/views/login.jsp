@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 
 <html>
-<body onload='document.loginForm.username.focus();'>
+<body>
     <h1>Spring Security 5 - Login Form</h1>
  
-    <c:if test="${not empty errorMessge}"><div style="color:red; font-weight: bold; margin: 30px 0px;">${errorMessge}</div></c:if>
+    <c:if test="${not empty errorMessge}"><div >${errorMessge}</div></c:if>
  
     <form name='login' action="login" method='POST'>
         <table>
@@ -20,10 +20,10 @@
                 <td><input type='password' name='password' /></td>
             </tr>
             <tr>
-                <td colspan='2'><input name="submit" type="submit" value="submit" /></td>
+                <td><input name="submit" type="submit" value="submit" /></td>
             </tr>
         </table>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-    </form>
+   </form>
 </body>
 </html>

@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @ComponentScan(basePackages={"com.spring.security"})
-@EnableTransactionManagement
+@EnableTransactionManagement(proxyTargetClass = true)
 @PropertySource(value = {"classpath:database.properties"})
 public class HibernateConfig {
   

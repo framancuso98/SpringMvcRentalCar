@@ -25,6 +25,8 @@ public class User{
 	private String nome;
 	@Column
 	private String cognome;
+	//@Column(nullable = false, length = 11)
+	//private int isEnabled;
 	@Column
 	private String data_nascita;
 	@JoinColumn(name = "authority_id")
@@ -93,4 +95,14 @@ public class User{
 	public void setAuthority(Authorities authority) {
 		this.authority = authority;
 	}
+
+	/*public boolean isEnabled() {
+		if(this.isEnabled == 1) return true;
+		else return false;
+	}
+
+	public void isEnabled(boolean isEnabled) {
+		if(isEnabled) this.isEnabled = 1;
+		else this.isEnabled = 0;
+	}*/
 }
