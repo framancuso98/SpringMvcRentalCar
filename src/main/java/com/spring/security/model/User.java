@@ -1,13 +1,20 @@
 package com.spring.security.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.UniqueElements;
 
 @Entity
 @Table(name = "user_tbl")
@@ -17,30 +24,36 @@ public class User{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private Integer id;
-	@Column
+	
+	@NotEmpty
+	@Column(name = "name")
 	private String name;
-	@Column
+	
+	@NotEmpty
+	@Column(name = "password")
 	private String password;
-	@Column
+	
+	@NotEmpty
+	@Column(name="nome")
 	private String nome;
-	@Column
+	
+	@NotEmpty
+	@Column(name="cognome")
 	private String cognome;
-	//@Column(nullable = false, length = 11)
-	//private int isEnabled;
-	@Column
+	
+	@NotEmpty
+	@Column(name="data_nascita")
 	private String data_nascita;
+	
 	@JoinColumn(name = "authority_id")
 	@OneToOne
 	private Authorities authority;
+
 	
-	public User() {}
-	
-	public User(String name, String password) {
-		this.name = name;
-		this.password = password;
+	public User() {
 	}
 	
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 

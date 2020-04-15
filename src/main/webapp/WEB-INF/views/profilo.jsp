@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -25,22 +25,26 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="<c:url value='allAuto' />">Lista auto<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<c:url value='/auto/all' />">Lista auto<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<c:url value='/profilo' />">Profilo</a>
+        <a class="nav-link" href="<c:url value='profilo' />">Profilo</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" action="logout" method="GET">
+    <form class="form-inline my-2 my-lg-0" action="" method="POST">
       <button class="btn btn-dark" type="submit">Logout</button>
     </form>
   </div>
 </nav>
-<h1>UTENTE</h1>
-<a href="utente/profilo">Profilo</a>
-<br><br><br>
-<a href="auto/all">Lista Auto</a>
+<h1>PROFILO</h1>
+<p>NOME:  ${userLoggato.nome} </p>
+<p>COGNOME:  ${userLoggato.cognome}</p>
+<p>USERNAME:  ${userLoggato.name}</p>
+<p> DATA DI NASCITA:  ${userLoggato.data_nascita}</p>
+
+	<form action="updateUser" method="GET">
+	<input type="submit" value="Modifica Profilo">
+	</form>
 </div>
 </body>
-
 </html>

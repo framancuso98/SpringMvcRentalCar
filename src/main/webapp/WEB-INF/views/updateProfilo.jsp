@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -28,19 +28,25 @@
         <a class="nav-link" href="<c:url value='allAuto' />">Lista auto<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<c:url value='/profilo' />">Profilo</a>
+        <a class="nav-link" href="<c:url value='profilo' />">Profilo</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" action="logout" method="GET">
+    <form class="form-inline my-2 my-lg-0" action="" method="POST">
       <button class="btn btn-dark" type="submit">Logout</button>
     </form>
   </div>
 </nav>
-<h1>UTENTE</h1>
-<a href="utente/profilo">Profilo</a>
-<br><br><br>
-<a href="auto/all">Lista Auto</a>
+<h1>MODIFICA PROFILO</h1>
+<form action="updateUser" method="POST">
+	Nome: <input type="text" name="nome" value="${userLoggato.nome }"> <br> <br>
+	Cognome: <input type="text" name="cognome" value="${userLoggato.cognome }"> <br> <br>
+	Username: <input type="text" name="name" value="${userLoggato.name }"> <br> <br>
+	Data Di Nascita: <input type="date" name="data_nascita" value="${userLoggato.data_nascita}"> <br> <br>
+	<input type="hidden" name="id" value="${userLoggato.id}">
+	<input type="hidden" name="password" value="${userLoggato.password}">
+	<input type="hidden" name="id_authority" value="${userLoggato.authority.id}">
+	<input type="submit" value="Modifica">
+</form>
 </div>
 </body>
-
 </html>

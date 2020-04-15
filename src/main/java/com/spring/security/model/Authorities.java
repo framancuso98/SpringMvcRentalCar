@@ -1,10 +1,13 @@
 package com.spring.security.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,10 +17,13 @@ public class Authorities {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
-	private Integer id;
+	private int id;
 	
-	@Column
+	@Column(name = "authority")
 	private String authority;
+		
+	public Authorities() {
+	}
 
 	public Integer getId() {
 		return id;
@@ -34,4 +40,12 @@ public class Authorities {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
+
+	@Override
+	public String toString() {
+		return "Authorities [id=" + id + ", authority=" + authority + "]";
+	}
+
+	
+	
 }

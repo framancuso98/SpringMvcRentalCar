@@ -18,17 +18,19 @@ import com.spring.security.model.User;
 import com.spring.security.service.UserService;
 
 @Controller
-@SessionAttributes("utenteLoggato")
+@SessionAttributes("userLoggato")
 public class LoginController {
+	
 	@Autowired
 	UserService userService;
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
 		return "login";
 	}
 	
     
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login_post", method = RequestMethod.POST)
     public String loginPage(@RequestParam(value = "error", required = false) String error, 
                             @RequestParam(value = "logout", required = false) String logout,
                             @RequestParam("username") String username,
@@ -47,15 +49,16 @@ public class LoginController {
         System.out.println(username);
         User user = userService.findUserByName(username);
         System.out.println(user);
-        model.addAttribute("utenteLoggato", username);
+        model.addAttribute("userLoggato", user);
         return AutoController.lista() ;
     }
   
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
-    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+    public String logoutPage (HttpServletRequest request, HttpServletResponse response, ModelMap model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){    
             new SecurityContextLogoutHandler().logout(request, response, auth);
+            model.remove("userLoggato");
         }
         return "redirect:/login?logout=true";
     }

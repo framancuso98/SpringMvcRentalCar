@@ -20,26 +20,99 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public boolean save(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			session = sessionFactory.openSession();
+			transaction = session.beginTransaction();
+			session.save(user);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+			return false;
+		}finally {
+			try {
+				session.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> list() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		Transaction transaction = null;
+		List<User> listaUser = null;
+		try {
+			session = sessionFactory.openSession();
+			transaction = session.beginTransaction();
+			listaUser = session.createQuery("from User").getResultList();
+			transaction.commit();
+			return listaUser; 
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+			return null;
+		}finally {
+			try {
+				session.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 	}
 
 	@Override
 	public User get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		Transaction transaction = null;
+		User user = null;
+		try {
+			session = sessionFactory.openSession();
+			transaction = session.beginTransaction();
+			user = session.get(User.class, id);
+			transaction.commit();
+			return user;
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+			return null;
+		}finally {
+			try {
+				session.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 	}
 
 	@Override
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		Session session = null;
+		Transaction transaction = null;
+		User user = null;
+		try {
+			session = sessionFactory.openSession();
+			transaction = session.beginTransaction();
+			user = session.get(User.class, id);
+			session.delete(user);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+			return false;
+		}finally {
+			try {
+				session.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -72,6 +145,29 @@ public class UserDAOImpl implements UserDAO {
 				e2.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public void update(User user) {
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			session = sessionFactory.openSession();
+			transaction = session.beginTransaction();
+			session.update(user);
+			transaction.commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}finally {
+			try {
+				session.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
 	}
 
 }
