@@ -44,7 +44,7 @@ public class Auto implements Serializable {
 	
 	//bi-directional many-to-one association to Categoria
 		@ManyToOne(fetch = FetchType.EAGER)
-		@JoinColumn(name="id_categoria", nullable=false)
+		@JoinColumn(name="categoria_id", nullable=false)
 		private Categoria categoria;
 
 		//bi-directional many-to-one association to Prenotazione

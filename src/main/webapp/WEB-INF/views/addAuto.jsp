@@ -1,20 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-
 <head>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous" />
-</head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
 	<div class="container-fluid">
+
 
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<a class="navbar-brand" href="<c:url value='admin' />">Rental Car</a>
@@ -44,32 +43,34 @@
 				</form>
 			</div>
 		</nav>
-
-		<h1>AGGIUNGI UTENTE</h1>
+		<h1>AGGIUNGI AUTO</h1>
 		<div class="col-12 mt-4 col-md-6">
-			<form method="POST" action="addUser">
+			<form method="POST" action="addAuto">
 				<div class="form-group">
-					<label for="nome">Nome</label> <input type="text"
-						class="form-control" name="nome">
+					<label for="nome">Costruttore</label> <input type="text"
+						class="form-control" name="costruttore"
+						value="${auto.costruttore}">
 				</div>
 				<div class="form-group">
-					<label for="exampleInputPassword1">Cognome</label> <input
-						type="text" class="form-control" name="cognome" >
+					<label for="exampleInputPassword1">Modello</label> <input
+						type="text" class="form-control" name="modello"
+						value="${auto.modello}">
 				</div>
 				<div class="form-group">
-					<label for="exampleInputEmail1">Username</label> <input type="text"
-						class="form-control" aria-describedby="emailHelp" name="name">
+					<label for="exampleInputEmail1">Targa</label> <input type="text"
+						class="form-control" aria-describedby="emailHelp" name="targa"
+						value="${auto.targa}">
 				</div>
 				<div class="form-group">
-					<label for="exampleInputPassword1">Data di Nascita</label> <input
-						type="date" class="form-control" name="data_nascita">
+					<label for="exampleInputPassword1">Anno di immatricolazione</label>
+					<input type="date" class="form-control" name="anno">
 				</div>
 				<div class="form-group">
-					<label for="exampleInputPassword1">Ruolo</label> <select
-						class="custom-select" name="ruolo">
-						<option selected></option>
-						<option value="utente">utente</option>
-						<option value="admin">admin</option>
+					<label for="exampleInputPassword1">Categoria</label> <select
+						class="custom-select" name="categoria_id">
+						<c:forEach items="${categorie}" var="c">
+							<option value="${c.id}">${c.descrizione}</option>
+						</c:forEach>
 					</select>
 				</div>
 
@@ -77,6 +78,11 @@
 			</form>
 		</div>
 
+		<c:choose>
+			<c:when test="${errore != null }">
+				<div class="alert alert-danger col-3" role="alert">${errore}</div>
+			</c:when>
+		</c:choose>
 	</div>
 </body>
 </html>

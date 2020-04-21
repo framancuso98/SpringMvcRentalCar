@@ -6,16 +6,16 @@ import com.spring.security.model.User;
 
 public interface UserDAO {
 	
-	boolean save(User user);
+	void saveUser(User user);
 	
-	List<User> list();
+	List<User> listUser();
 	
-	User get(int id);
+	User getUser(int id);
 	
-	boolean delete(int id);
+	void deleteUser(int id);
 	
 	User findUserByName(String name);
 	
-	public void update(User user);
+	public void updateUser(User user);
 	
 }

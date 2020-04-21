@@ -26,7 +26,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
-		return "login";
+		return "index";
 	}
 	
     
@@ -50,7 +50,7 @@ public class LoginController {
         User user = userService.findUserByName(username);
         System.out.println(user);
         model.addAttribute("userLoggato", user);
-        return AutoController.lista() ;
+        return "index" ;
     }
   
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
@@ -60,6 +60,6 @@ public class LoginController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
             model.remove("userLoggato");
         }
-        return "redirect:/login?logout=true";
+        return "index";
     }
 }

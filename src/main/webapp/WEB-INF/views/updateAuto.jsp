@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,57 +46,36 @@
     </form>
   </div>
 </nav>
-<h1>LISTA UTENTI</h1>
-<table class = "table table-striped ">
-<thead class="thead-dark">
-	<tr>
-		<th>Nome</th>
-		<th>Cognome</th>
-		<th>Username</th>
-		 <th>Data di Nascita</th>
-		  <th>Ruolo</th>
-		 <th>Elimina Utente </th>
-	</tr>
-	</thead>
-        <tbody>
-		<c:forEach items="${lista}" var="user">
-		<tr>
-			<td>
-				${user.nome}
-			</td>
-			<td>
-				${user.cognome}
-			</td>
-			<td>
-				${user.name}
-			</td>
-			<td>
-				${user.data_nascita}
-			</td>
-			<c:choose>
-				<c:when test="${user.authority.authority.equalsIgnoreCase('ROLE_ADMIN')}">
-					<td>
-						Admin
-					</td>
-				</c:when>
-				<c:when test="${user.authority.authority.equalsIgnoreCase('ROLE_USER')}">
-					<td>
-						Utente
-					</td>
-				</c:when>
-			</c:choose>
- 			<td> 
- 				<form action="allUser" method="POST"> 
-					<input type="submit" class="btn btn-outline-danger"  value="Elimina"> 
- 					<input type="hidden" name="id" value="${user.id}"> 
- 				</form>
-				</td> 
- 		</tr> 
+<h1>MODIFICA AUTO</h1>
+<form action="updateAuto" method="POST">
+Costruttore:	<input type="text" name="costruttore" value="${auto.costruttore}">
+<br><br>
+Modello:	<input type="text" name="modello" value="${auto.modello }">
+<br><br>
+Targa:	<input type="text" name="targa" value="${auto.targa }">
+<br><br>
+Anno di immatricolazione:	<input type="date" name="anno" value="${auto.anno}">
+<br><br>
+<input type="hidden" name="id" value="${auto.id}">
+<select name="id_categoria">
+       <c:forEach items="${categorie}" var="c">
+  			<option  value="${c.id}">${c.descrizione}</option>
 		</c:forEach>
-		</tbody>
-</table>
+      </select>
+<input type="submit">
+<br> <br>
+<c:choose>
+<c:when test="${errore == null }">
+
+</c:when>
+<c:otherwise>
+<div class="alert alert-danger col-12" role="alert">
+									${errore}</div>
+</c:otherwise>
+
+</c:choose>
+
+</form>
 </div>
-
-
 </body>
 </html>

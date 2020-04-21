@@ -1,11 +1,11 @@
-package com.spring.security.dao;
+package com.spring.security.service;
 
 import java.util.List;
 
 import com.spring.security.model.Auto;
 
-public interface AutoDAO {
-	
+public interface AutoService {
+
 	void saveAuto(Auto auto);
 	
 	List<Auto> listAuto();

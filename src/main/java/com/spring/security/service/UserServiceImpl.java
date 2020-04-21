@@ -15,27 +15,25 @@ public class UserServiceImpl implements UserService {
 	UserDAO userDAO;
 
 	@Override
-	public boolean save(User user) {
-		boolean flag = userDAO.save(user);
-		return flag;
+	public void saveUser(User user) {
+		userDAO.saveUser(user);
 	}
 
 	@Override
-	public List<User> list() {
-		List<User> list = userDAO.list();
+	public List<User> listUser() {
+		List<User> list = userDAO.listUser();
 		return list;
 	}
 
 	@Override
-	public User get(int id) {
-		User user = userDAO.get(id);
+	public User getUser(int id) {
+		User user = userDAO.getUser(id);
 		return user;
 	}
 
 	@Override
-	public boolean delete(int id) {
-		boolean flag = userDAO.delete(id);
-		return flag;
+	public void deleteUser(int id) {
+		userDAO.deleteUser(id);
 	}
 
 	@Override
@@ -45,8 +43,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void update(User user) {
-		userDAO.update(user);
+	public void updateUser(User user) {
+		userDAO.updateUser(user);
 	}
 
 }

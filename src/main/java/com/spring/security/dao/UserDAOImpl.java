@@ -19,7 +19,7 @@ public class UserDAOImpl implements UserDAO {
 	SessionFactory sessionFactory;
 	
 	@Override
-	public boolean save(User user) {
+	public void saveUser(User user) {
 		Session session = null;
 		Transaction transaction = null;
 		try {
@@ -27,11 +27,9 @@ public class UserDAOImpl implements UserDAO {
 			transaction = session.beginTransaction();
 			session.save(user);
 			transaction.commit();
-			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			transaction.rollback();
-			return false;
 		}finally {
 			try {
 				session.close();
@@ -43,7 +41,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<User> list() {
+	public List<User> listUser() {
 		Session session = null;
 		Transaction transaction = null;
 		List<User> listaUser = null;
@@ -67,7 +65,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User get(int id) {
+	public User getUser(int id) {
 		Session session = null;
 		Transaction transaction = null;
 		User user = null;
@@ -91,7 +89,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean delete(int id) {
+	public void deleteUser(int id) {
 		Session session = null;
 		Transaction transaction = null;
 		User user = null;
@@ -101,11 +99,9 @@ public class UserDAOImpl implements UserDAO {
 			user = session.get(User.class, id);
 			session.delete(user);
 			transaction.commit();
-			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			transaction.rollback();
-			return false;
 		}finally {
 			try {
 				session.close();
@@ -148,7 +144,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void update(User user) {
+	public void updateUser(User user) {
 		Session session = null;
 		Transaction transaction = null;
 		try {

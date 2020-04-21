@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,57 +46,72 @@
     </form>
   </div>
 </nav>
-<h1>LISTA UTENTI</h1>
+<h1>LISTA PRENOTAZIONI</h1>
 <table class = "table table-striped ">
 <thead class="thead-dark">
 	<tr>
 		<th>Nome</th>
 		<th>Cognome</th>
-		<th>Username</th>
-		 <th>Data di Nascita</th>
-		  <th>Ruolo</th>
-		 <th>Elimina Utente </th>
+		<th>Costruttore</th>
+		<th>Modello</th>
+		<th>Targa</th>
+		<th>Anno Immatricolazione </th>
+		<th>Categoria</th>
+		<th>Stato Prenotazione</th>
+		<th></th>
+		<th></th>
 	</tr>
 	</thead>
         <tbody>
-		<c:forEach items="${lista}" var="user">
+		<c:forEach items="${listaPre}" var="prenotazione">
 		<tr>
-			<td>
-				${user.nome}
+ 			<td>
+				${prenotazione.user.nome} 
 			</td>
 			<td>
-				${user.cognome}
+				${prenotazione.user.cognome}
 			</td>
 			<td>
-				${user.name}
+				${prenotazione.auto.costruttore}
 			</td>
 			<td>
-				${user.data_nascita}
+				${prenotazione.auto.modello}
+			</td>
+			<td>
+				${prenotazione.auto.targa}
+			</td>
+			<td>
+				${prenotazione.auto.anno}
+			</td>
+			<td> 
+ 				${prenotazione.auto.categoria.descrizione}
+			</td> 
+			<td>
+				${prenotazione.stato}
 			</td>
 			<c:choose>
-				<c:when test="${user.authority.authority.equalsIgnoreCase('ROLE_ADMIN')}">
-					<td>
-						Admin
-					</td>
-				</c:when>
-				<c:when test="${user.authority.authority.equalsIgnoreCase('ROLE_USER')}">
-					<td>
-						Utente
-					</td>
-				</c:when>
-			</c:choose>
- 			<td> 
- 				<form action="allUser" method="POST"> 
-					<input type="submit" class="btn btn-outline-danger"  value="Elimina"> 
- 					<input type="hidden" name="id" value="${user.id}"> 
- 				</form>
+			<c:when test="${prenotazione.stato.equalsIgnoreCase('in sospeso') }">
+ 				<td> 
+ 					<form action="accetta" method="POST"> 
+						<input type="submit" class="btn btn-outline-danger"  value="Accetta"> 
+ 						<input type="hidden" name="id" value="${prenotazione.id}"> 
+ 					</form>
 				</td> 
+				<td> 
+ 					<form action="rifiuta" method="POST">
+						<input type="submit" class="btn btn-outline-danger"  value="Rifiuta"> 
+ 						<input type="hidden" name="id" value="${prenotazione.id}">
+ 					</form>
+				</td>
+			</c:when>
+			<c:otherwise>
+			<td></td>
+			</c:otherwise>
+			</c:choose>
  		</tr> 
 		</c:forEach>
 		</tbody>
 </table>
 </div>
-
-
 </body>
 </html>

@@ -27,10 +27,10 @@ public class Prenotazione implements Serializable {
 	@JoinColumn(name="id_auto", nullable=false)
 	private Auto auto;
 
-	//bi-directional many-to-one association to Utente
+	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="id_user", nullable=false)
-	private User utente;
+	private User user;
 	
 	
 
@@ -38,42 +38,62 @@ public class Prenotazione implements Serializable {
 	}
 
 
+
 	public int getId() {
 		return id;
 	}
+
+
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
+
+
 	public String getStato() {
 		return stato;
 	}
+
+
 
 	public void setStato(String stato) {
 		this.stato = stato;
 	}
 
+
+
 	public Auto getAuto() {
 		return auto;
 	}
+
+
 
 	public void setAuto(Auto auto) {
 		this.auto = auto;
 	}
 
-	public User getUtente() {
-		return utente;
+
+
+	public User getUser() {
+		return user;
 	}
 
-	public void setUtente(User utente) {
-		this.utente = utente;
+
+
+	public void setUser(User user) {
+		this.user = user;
 	}
+
+
 
 	@Override
 	public String toString() {
-		return "Prenotazione [id=" + id + ", stato=" + stato + ", auto=" + auto + ", utente=" + utente + "]";
+		return "Prenotazione [id=" + id + ", stato=" + stato + ", auto=" + auto + ", user=" + user + "]";
 	}
+
+
+	
 
 	
 }

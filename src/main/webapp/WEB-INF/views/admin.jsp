@@ -19,7 +19,7 @@
 <div class = "container-fluid">
   
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
-  <a class="navbar-brand" href="<c:url value='/login/home' />">Rental Car</a>
+  <a class="navbar-brand" href="<c:url value='admin' />">Rental Car</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -30,7 +30,7 @@
         <a class="nav-link" href="<c:url value='allAuto' />">Lista auto<span class="sr-only">(current)</span></a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="<c:url value='/allUser' />">Lista Utenti</a>
+        <a class="nav-link" href="<c:url value='allUser' />">Lista Utenti</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<c:url value='addAuto' />">Aggiungi Auto</a>
